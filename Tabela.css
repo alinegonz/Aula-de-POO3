@@ -1,0 +1,37 @@
+﻿body 
+{
+}
+.divTable
+{
+    display:  table;
+    width:auto;
+    background-color:#eee;
+    border:1px solid  #666666;
+    border-spacing:5px;
+    border-collapse:separate;
+}
+
+.divRow
+{
+    display:table-row;
+    width:100%;
+    height:auto;
+}
+
+.divCell
+{
+    float:left;
+    display:table-column;
+    width:49%;
+    background-color:#ccc;
+}
+
+.Linha {
+    height: 1px;
+    background-color:#000000;
+}
+.PainelCentral
+{
+    height: 584px;
+    background-color:White;
+}

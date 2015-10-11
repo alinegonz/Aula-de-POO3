@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Sistema Vendas</title>
+    <link rel="stylesheet" type="text/css" href="Tabela.css" />
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="divForm">
+            <div id="geral">
+                <div id="logo">
+                    <asp:Image ID="Image1" runat="server" Height="90px" Width="90px" ImageUrl="~/image/lgo_uni.png"  />
+                    <asp:Label ID="Label1" runat="server" Font-Names="Script MT Bold" Font-Size="70px" Text="Super Vendas ... Yuipi !!"></asp:Label>
+                </div>
+
+                <div id="Linha1" class="Linha">
+                </div>
+
+                <div id="menu">
+                    <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem Text="Cadastro" Value="Cadastro">
+                                <asp:MenuItem Text="Produto"  Value="Produto" NavigateUrl="~/ProdutoListagem.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Vendedor" Value="Vendedor"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Fazer Venda" Value="FazerVenda"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </div>
+
+                <div id="Linha2" class="Linha">
+                </div>
+    
+                <div id="painel" class="PainelCentral">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </div>
+
+                <div id="Linha3" class="Linha">
+                </div>
+
+                <div id="rodape">
+                    &copy; Meu sistema de vendas&nbsp; - Todos os direitos reservados..
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
