@@ -160,34 +160,42 @@ public class tbProdutoBLL : AcessoDAL
         String sSQL = "";
 
         sSQL += "INSERT INTO tbProduto (idProduto, dsDescricao, dsFornecedor, ";
-        sSQL += "vlValor, qtEstoque) VALUES ";
-        sSQL += "(@idProduto, @dsDescricao, @dsFornecedor, ";
-        sSQL += "@vlValor, @qtEstoque) ";
+        sSQL += "vlValor, qtEstoque) VALUES (?, ?, ?, ?, ?)";
+        
 
         conexao = (OleDbConnection)CriaConexaoOleDb();
         command = new OleDbCommand(sSQL, conexao);
         command.CommandType = CommandType.Text;
 
-        OleDbParameter parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
-        parametro.Value = idProduto;
+	command.Parameters.AddWithValue("@idProduto", idProduto);
+	command.Parameters.AddWithValue("@dsDescricao", produto.dsDescricao);
+	command.Parameters.AddWithValue("@dsDescricao", Produto.dsFornecedor);
+	command.Parameters.AddWithValue("@vlValor",produto.vlValor);
+	command.Parameters.AddWithValue("@qtEstoque",produto. qtEstoque);
 
-        parametro = command.Parameters.Add("@dsDescricao", OleDbType.VarChar);
-        parametro.Value = produto.dsDescricao;
 
-        parametro = command.Parameters.Add("@dsFornecedor", OleDbType.VarChar);
-        parametro.Value = produto.dsFornecedor;
+       // OleDbParameter parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
+        //parametro.Value = idProduto;
 
-        parametro = command.Parameters.Add("@vlValor", OleDbType.Double);
-        parametro.Value = produto.vlValor;
+       // parametro = command.Parameters.Add("@dsDescricao", OleDbType.VarChar);
+       // parametro.Value = produto.dsDescricao;
 
-        parametro = command.Parameters.Add("@qtEstoque", OleDbType.Integer);
-        parametro.Value = produto.qtEstoque;
+       // parametro = command.Parameters.Add("@dsFornecedor", OleDbType.VarChar);
+        //parametro.Value = produto.dsFornecedor;
+
+       // parametro = command.Parameters.Add("@vlValor", OleDbType.Double);
+       // parametro.Value = produto.vlValor;
+
+        //parametro = command.Parameters.Add("@qtEstoque", OleDbType.Integer);
+      //  parametro.Value = produto.qtEstoque;
 
         try
         {
             drOleDb = command.ExecuteReader();
             drOleDb.Close();
             conexao.Close();
+            
+            
         }
         catch (SystemException e)
         {
@@ -200,28 +208,36 @@ public class tbProdutoBLL : AcessoDAL
     {
         String sSQL = "";
 
-        sSQL += "UPDATE tbProduto SET dsDescricao = @dsDescricao, dsFornecedor = @dsFornecedor, ";
-        sSQL += "vlValor = @vlValor, qtEstoque = @qtEstoque WHERE idProduto = @idProduto ";
+        sSQL += "UPDATE tbProduto SET dsDescricao = ?, dsFornecedor = ?, ";
+        sSQL += "vlValor = ?, qtEstoque = ? WHERE idProduto =? ";
         
 
         conexao = (OleDbConnection)CriaConexaoOleDb();
         command = new OleDbCommand(sSQL, conexao);
         command.CommandType = CommandType.Text;
 
-        OleDbParameter parametro = command.Parameters.Add("@dsDescricao", OleDbType.VarChar);
-        parametro.Value = produto.dsDescricao;
+	command.Parameters.AddWithValue("@dsDescricao", produto.dsDescricao);
+	command.Parameters.AddWithValue("@dsDescricao", Produto.dsFornecedor);
+	command.Parameters.AddWithValue("@vlValor",produto.vlValor);
+	command.Parameters.AddWithValue("@qtEstoque",produto.qtEstoque);
+	command.Parameters.AddWithValue("@idProduto", idProduto);
 
-        parametro = command.Parameters.Add("@dsFornecedor", OleDbType.VarChar);
-        parametro.Value = produto.dsFornecedor;
 
-        parametro = command.Parameters.Add("@vlValor", OleDbType.Double);
-        parametro.Value = produto.vlValor;
+	
+        //OleDbParameter parametro = command.Parameters.Add("@dsDescricao", OleDbType.VarChar);
+       // parametro.Value = produto.dsDescricao;
 
-        parametro = command.Parameters.Add("@qtEstoque", OleDbType.Integer);
-        parametro.Value = produto.qtEstoque;
+       // parametro = command.Parameters.Add("@dsFornecedor", OleDbType.VarChar);
+       // parametro.Value = produto.dsFornecedor;
 
-        parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
-        parametro.Value = produto.idProduto;
+        //parametro = command.Parameters.Add("@vlValor", OleDbType.Double);
+        //parametro.Value = produto.vlValor;
+
+       // parametro = command.Parameters.Add("@qtEstoque", OleDbType.Integer);
+        //parametro.Value = produto.qtEstoque;
+
+        //parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
+        //parametro.Value = produto.idProduto;
 
         try
         {
@@ -239,14 +255,15 @@ public class tbProdutoBLL : AcessoDAL
     {
         String sSQL = "";
 
-        sSQL += "DELETE FROM tbProduto WHERE idProduto = @idProduto ";
+        sSQL += "DELETE FROM tbProduto WHERE idProduto = ? ";
 
         conexao = (OleDbConnection)CriaConexaoOleDb();
         command = new OleDbCommand(sSQL, conexao);
         command.CommandType = CommandType.Text;
 
-        OleDbParameter parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
-        parametro.Value = produto.idProduto;
+	comand.Paremeters.AddWithValue("idProduto", produto.idProduto);
+        ///OleDbParameter parametro = command.Parameters.Add("@idProduto", OleDbType.Integer);
+        //parametro.Value = produto.idProduto;
 
         try
         {
